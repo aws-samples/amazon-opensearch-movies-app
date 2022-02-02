@@ -8,7 +8,7 @@ We will create a search application with Amazon OpenSearch Service. Instead of u
 
 ## Architecture
 
-![arch](Images/OS-Arch.png)
+![arch](images/OS-Arch.png)
 
 What you have here is a VPC in which the Amazon EC2 instance will reside. This instance is going to add the sample movies data into the movies index in the Amazon OpenSearch service cluster. Once the data is ready, users can access and query the data through a web form hosted on Amazon S3. The queries will go through Amazon API Gateway and pass the request to AWS Lambda function which is the only authorized entity to interact with the Amazon OpenSearch cluster and retrieve the requested data.
 
@@ -16,7 +16,7 @@ What you have here is a VPC in which the Amazon EC2 instance will reside. This i
 
 1. Go to Amazon S3 service on the AWS Console and make sure that you have the **Block Public Access for the Account** turned off. This is only for Demo purposes and you should **NOT** do this in your production account.
 
-![S3_setting](Images/s3.png)
+![S3_setting](images/s3.png)
 
 This is needed beacuse we're going to create a public bucket to host the static website.
 
@@ -59,7 +59,7 @@ aws lambda update-function-code --function-name search-es-lambda --zip-file file
 
 Look for the Amazon S3 static website endpoint. Go to CloudFormation, select the recently launched template, click on the nested one called **YourStackName-Lambda-RandomString** and click on the Outputs tab. You'll see WebsiteURL with a link like **http://search-app-accountID-.s3-website-eu-west-1.amazonaws.com/**. Once opened, a static website like this will appear: 
 
-![sample-site](Images/sample-site.png)
+![sample-site](images/sample-site.png)
 
 Now, type the item to search for!
 
